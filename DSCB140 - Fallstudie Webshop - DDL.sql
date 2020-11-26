@@ -1,3 +1,7 @@
+drop database if exists webshop;
+create database webshop;
+use webshop;
+
 create table status (
 statusid int primary key,
 bearbeitungsstatus varchar(50)

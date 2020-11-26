@@ -78,7 +78,6 @@ statusid int not null, -- min-Kardinalität 1
 foreign key (statusid) references status(statusid) on delete cascade -- FK-Constraint
 );
 
-select * from bestellung;
 
 -- --------------------
 

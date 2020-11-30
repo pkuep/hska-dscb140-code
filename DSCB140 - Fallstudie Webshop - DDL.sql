@@ -1,4 +1,5 @@
 drop database if exists webshop;
+
 create database webshop;
 use webshop;
 
@@ -29,7 +30,7 @@ bezeichnung varchar(50),
 angelegt_am timestamp,
 verfuegbarkeit int not null,
 preis decimal(6,2) not null,
-katid int not null,
+katid int,
 foreign key (katid) references kategorie(katid) on delete cascade
 );
 
@@ -77,6 +78,7 @@ statusid int not null, -- min-Kardinalität 1
 foreign key (statusid) references status(statusid) on delete cascade -- FK-Constraint
 );
 
+select * from bestellung;
 
 -- --------------------
 
@@ -90,7 +92,7 @@ primary key (kunde_email, pnr) -- Definition eines zusammengesetzten Primärschl
 );
 
 
-create table bestellposition (	
+create table bestellposition (
 bestnr int, -- wird Teil des Primärschlüssels (s.u.), daher NOT NULL nicht nötig
 foreign key (bestnr) references bestellung(bestnr) on delete cascade, -- gleichzeitig Teil vom Primärschlüssel und Fremdschlüssel
 pnr int, -- wird Teil des Primärschlüssels (s.u.), daher NOT NULL nicht nötig
